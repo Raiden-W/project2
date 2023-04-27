@@ -6,7 +6,7 @@ const userSchema = new Schema(
     username: {
       type: String,
       trim: true,
-      required: false,
+      required: true,
       unique: true
     },
     email: {
@@ -21,6 +21,7 @@ const userSchema = new Schema(
       required: true
     }
   },
+
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
     timestamps: true
