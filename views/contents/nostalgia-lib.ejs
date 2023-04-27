@@ -1,5 +1,10 @@
 <section id="nostalgia-lib-sec">
 	<% allItems.forEach(item => { %>
-	<div class="item-card"><%- include("../partials/item-card", { item }) %></div>
+	    <div class="item-card"><%- include("../partials/item-card", { item }) %></div>
 	<% }); %>
+    <div id="create-item-card">
+        <a href="/create-item">
+            <button>Create Your Item</button>
+        </a>
+    </div>
 </section>

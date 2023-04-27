@@ -1,13 +1,13 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose')
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
-const userSchema = new Schema(
+const user = new Schema(
   {
     username: {
       type: String,
       trim: true,
       required: true,
-      unique: true
+      unique: true,
     },
     password: {
       type: String,
@@ -16,7 +16,7 @@ const userSchema = new Schema(
   },
 );
 
-const User = model("User", userSchema);
+const User = model('User', user)
 
 module.exports = User;
 
