@@ -9,25 +9,14 @@ const userSchema = new Schema(
       required: true,
       unique: true
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-      trim: true
-    },
     password: {
       type: String,
       required: true
-    }
+    }   
   },
-
-  {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
-    timestamps: true
-  }
 );
 
 const User = model("User", userSchema);
 
 module.exports = User;
+
