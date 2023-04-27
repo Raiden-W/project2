@@ -1,16 +1,32 @@
+<!-- by Zijun 04-27 -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title><%= appTitle %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title><%= appTitle %></title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+	</head>
 
-  <body>
-    <%- body %>
-
-    <script src="/js/script.js"></script>
-  </body>
+	<body>
+		<nav>
+			<div id="nav-leftside">
+				<a href="/"><img id="logo-img" src="" alt="logo image" /></a>
+				<a href="/nostalgia-lib">Nostalgia Libary</a>
+				<a href="/stories">Stories</a>
+			</div>
+			<div id="nav-rightside">
+				<a href="/profile">Profile</a>
+				<a href="/signin">Sign In</a>
+				<a href="/signup">Sign up</a>
+			</div>
+		</nav>
+		<%- body %>
+    <footer>
+      <p>Created by</p>
+      <p>Contact info</p>
+    </footer>
+		<script src="/js/script.js"></script>
+	</body>
 </html>
