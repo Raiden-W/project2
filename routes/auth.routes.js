@@ -3,10 +3,10 @@ const router = express.Router();
 const bcryptjs = require("bcryptjs")
 const User = require('../models/User.model');
 const pwdRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/
-
+const { isLoggedIn, isLoggedOut } = require('../middleware/route-guards');
 
 //Get signup page
-router.get('/signup', (req, res) => {
+router.get('/signup',isLoggedOut, (req, res) => {
     res.render('auth/signup');
 });
 
@@ -43,12 +43,12 @@ router.post('/signup', async (req, res) => {
 })
 
 // Get login page
-router.get('/login', (req, res) => {
+router.get('/login',isLoggedOut, (req, res) => {
     res.render('auth/login');
 });
 
 router.post('/login', async (req, res) => {
-    console.log('SESSION =====> ', req.session);
+
     try {
         const existingUser = await User.findOne({ username: req.body.username })
         if (existingUser) {
