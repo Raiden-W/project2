@@ -1,10 +1,9 @@
 const express = require('express')
 const router = express.Router()
-
 const NostalgicItem = require('../models/NostalgicItem.model.js')
 
 /* GET home page */
-router.get('/nostalgia-lib', async (req, res, next) => {
+router.get('/nostalgia-lib',  async (req, res, next) => {
   // const allItems = await NostalgicItem.find()
   const allItems = [
     {
@@ -27,12 +26,15 @@ router.get('/nostalgia-lib', async (req, res, next) => {
   res.render('contents/nostalgia-lib', { allItems })
 })
 
-router.get('/create-item', (req, res, next) => {
+router.get('/contents/create-item', (req, res, next) => {
   res.render('contents/create-item')
 })
 
 router.post('/create-item', (req, res, next) => {
   console.log(req.body)
 })
+
+
+
 
 module.exports = router
