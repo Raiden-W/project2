@@ -1,10 +1,9 @@
 const express = require('express')
 const router = express.Router()
-
 const NostalgicItem = require('../models/NostalgicItem.model.js')
 
 /* GET home page */
-router.get('/nostalgia-lib', async (req, res, next) => {
+router.get('/nostalgia-lib',  async (req, res, next) => {
   // const allItems = await NostalgicItem.find()
   const allItems = [
     {
