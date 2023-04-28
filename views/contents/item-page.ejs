@@ -1,0 +1,26 @@
+<div>
+    <div id="item-page-img-container">
+        <% item.imgUrl.forEach(url => { %>
+            <img class="item-page-img" src="<%- url %>" width="200px" alt="<%- item.name %> image">
+        <% }) %>      
+    </div>
+    <h4 id="item-page-name"><%- item.name %></h4>
+    <p id="item-long-info"><%- item.longInfo %></p>
+    <% if(!!item.createdBy) { %>  
+        <p>Added by <%- item.createdBy.username %></p>
+    <% } %>
+    <div>
+        <p>Collected by <%- item.collectedBy.length %> users</p>
+        <a href="/stories/<%- item._id %>/create-story"><img src="" alt="heart button image"></a>
+    </div>
+    <% if(item.stories.length !== 0) { %>  
+        <div class="item-page-stories-container">
+            <% item.stories.forEach(story => { %>
+            <p>By user <%- story.createdBy.username %></p>
+            <p><%- story.content %></p>
+            <% }) %> 
+        </div> 
+    <% } else { %> 
+        <p>No stories here yet.</p>
+    <% } %> 
+</div>

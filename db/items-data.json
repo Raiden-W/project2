@@ -2,19 +2,56 @@
   {
     "name": "Furby",
     "imgUrl": [
-      "https://i.etsystatic.com/7863475/r/il/1b7911/3843664499/il_570xN.3843664499_36iv.jpg"
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1682693782/nostalgic%20items/furby-0_qrxs64.jpg"
     ],
     "shortInfo": "Furby talks Furbish.",
     "longInfo": "Furby talks Furbish.",
     "collectedBy": [],
-    "createdBy": {}
+    "createdBy": {},
+    "stories": []
   },
   {
     "name": "Nokia 3310",
-    "imgUrl": ["https://spycraft.b-cdn.net/wp-content/uploads/2019/12/products-188-420x420.jpg"],
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1682693783/nostalgic%20items/nokia-3310-0_soejqx.png"
+    ],
     "shortInfo": "What an acient Nokia.",
     "longInfo": "What an acient Nokia.",
     "collectedBy": [],
-    "createdBy": {}
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "Hoop Rolling",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1682693782/nostalgic%20items/hoop-rolling-0_qcioid.jpg"
+    ],
+    "shortInfo": "Simple joy to run with hoop",
+    "longInfo": "Simple joy to run with hoop",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "Waterful Ring Toss",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1682693782/nostalgic%20items/waterful-ring-toss-0_izkheo.jpg"
+    ],
+    "shortInfo": "Digital game without digital.",
+    "longInfo": "Digital game without digita.",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "iPod",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1682693783/nostalgic%20items/ipod-0_rhmika.png"
+    ],
+    "shortInfo": "The wheel-click is the soul.",
+    "longInfo": "The wheel-click is the soul.",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
   }
 ]
