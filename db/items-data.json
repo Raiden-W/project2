@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Furby",
+    "imgUrl": [
+      "https://i.etsystatic.com/7863475/r/il/1b7911/3843664499/il_570xN.3843664499_36iv.jpg"
+    ],
+    "shortInfo": "Furby talks Furbish.",
+    "longInfo": "Furby talks Furbish.",
+    "collectedBy": [],
+    "createdBy": {}
+  },
+  {
+    "name": "Nokia 3310",
+    "imgUrl": ["https://spycraft.b-cdn.net/wp-content/uploads/2019/12/products-188-420x420.jpg"],
+    "shortInfo": "What an acient Nokia.",
+    "longInfo": "What an acient Nokia.",
+    "collectedBy": [],
+    "createdBy": {}
+  }
+]
