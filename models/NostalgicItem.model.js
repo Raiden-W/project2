@@ -22,11 +22,11 @@ const nostalgicItem = new Schema(
     },
     collectedBy: {
       type: [Schema.Types.ObjectId],
-      ref: 'user',
+      ref: 'User',
     },
     createdBy: {
       type: Schema.Types.ObjectId,
-      ref: 'user',
+      ref: 'User',
     },
   },
 
