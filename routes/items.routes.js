@@ -26,12 +26,15 @@ router.get('/nostalgia-lib',  async (req, res, next) => {
   res.render('contents/nostalgia-lib', { allItems })
 })
 
-router.get('/create-item', (req, res, next) => {
+router.get('/contents/create-item', (req, res, next) => {
   res.render('contents/create-item')
 })
 
 router.post('/create-item', (req, res, next) => {
   console.log(req.body)
 })
+
+
+
 
 module.exports = router

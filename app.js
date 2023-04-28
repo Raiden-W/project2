@@ -40,7 +40,7 @@ const profileRoutes = require('./routes/profile.routes')
 app.use('/profile', profileRoutes)
 
 const storiesRoutes = require('./routes/stories.routes')
-app.use('/stories', storiesRoutes)
+app.use('/contents', storiesRoutes)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app)
