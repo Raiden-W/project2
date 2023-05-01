@@ -10,10 +10,10 @@ router.get('/', isLoggedIn, async (req, res) => {
     .sort({ createdAt: -1 })
     .populate('createdBy', 'username')
     .populate('itemId', 'imgUrl')
+    console.log(stories)
   res.render('profile', { stories })
+
 })
-
-
 
 
 module.exports = router
