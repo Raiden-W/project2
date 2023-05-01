@@ -3,8 +3,8 @@ const router = express.Router()
 const { isLoggedIn } = require('../middleware/route-guards')
 const Story = require('../models/Story.model')
 const NostalgicItem = require('../models/NostalgicItem.model')
-const ObjectId = require('mongodb').ObjectId
 
+// list last stories
 router.get('/', async (req, res) => {
   let stories = []
   stories = await Story.find()
@@ -14,10 +14,7 @@ router.get('/', async (req, res) => {
   res.render('contents/stories', { stories })
 })
 
-// router.get('/:itemId/stories', (req, res) => {
-//   res.render('contents/stories')
-// })
-
+// create
 router.get('/:itemId/create-story', isLoggedIn, (req, res) => {
   res.render('contents/create-story')
 })
@@ -48,7 +45,21 @@ router.post('/:itemId/create-story', async (req, res) => {
   }
 })
 
+//edit
+router.get("/edit/:storyId", async (req, res) => {
+  const storyToEdit = await Story.findById(req.params.storyId)
+  res.render('contents/edit-story', { storyToEdit })
+})
 
+router.post("/edit/:storyId", async (req, res) => {
+  const { storyId } = req.params
+  await Story.findByIdAndUpdate(storyId, req.body, {
+    new: true,
+  })
+  res.redirect('/profile')
+})
+
+//delete
 router.get("/delete/:storyId", async (req, res) => {
   console.log('this is the story id', req.params)
   const { storyId } = req.params
@@ -64,7 +75,5 @@ router.get("/delete/:storyId", async (req, res) => {
 
   res.redirect("/profile")
 })
-
-
 
 module.exports = router
