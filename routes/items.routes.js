@@ -1,9 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const NostalgicItem = require('../models/NostalgicItem.model.js')
-const User = require('../models/User.model.js')
 
-const uploader = require('../middleware/cloudinary.config.js')
+const { uploader } = require('../middleware/cloudinary.config.js')
 
 router.get('/nostalgia-lib', async (req, res, next) => {
   try {
@@ -14,20 +13,19 @@ router.get('/nostalgia-lib', async (req, res, next) => {
   }
 })
 
-router.get('/contents/create-item', (req, res, next) => {
+router.get('/create-item', (req, res, next) => {
   res.render('contents/create-item')
 })
 
-router.post('/contents/create-item', uploader.array('img', 4), async (req, res, next) => {
+router.post('/create-item', uploader.array('img', 4), async (req, res, next) => {
   try {
-    const currUser = req.session.user._id
     const newItemToDB = {
       name: req.body.name,
       imgUrl: req.files.map(file => file.path),
       shortInfo: req.body.shortInfo,
       longInfo: req.body.longInfo,
       collectedBy: [],
-      createdBy: currUser,
+      createdBy: req.session.user._id,
       stories: [],
     }
     const newItem = await NostalgicItem.create(newItemToDB)
@@ -44,13 +42,12 @@ router.get('/item/:itemId', async (req, res, next) => {
       .populate('createdBy', 'username')
     if (item.stories.length !== 0) {
       await item.populate('stories')
-      const promises = []
+      const promisesGetUsername = []
       item.stories.forEach(story => {
-        promises.push(story.populate('createdBy', 'username'))
+        promisesGetUsername.push(story.populate('createdBy', 'username'))
       })
-      await Promise.all(promises)
+      await Promise.all(promisesGetUsername)
     }
-    // console.log(item)
     res.render('contents/item-page', { item })
   } catch (error) {
     console.log(error)
