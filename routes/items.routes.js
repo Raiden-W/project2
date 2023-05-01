@@ -20,14 +20,14 @@ router.get('/contents/create-item', (req, res, next) => {
 
 router.post('/contents/create-item', uploader.array('img', 4), async (req, res, next) => {
   try {
-    const currUser = await User.findOne({ username: req.session.user.username })
+    const currUser = req.session.user._id
     const newItemToDB = {
       name: req.body.name,
       imgUrl: req.files.map(file => file.path),
       shortInfo: req.body.shortInfo,
       longInfo: req.body.longInfo,
       collectedBy: [],
-      createdBy: currUser._id,
+      createdBy: currUser,
       stories: [],
     }
     const newItem = await NostalgicItem.create(newItemToDB)
@@ -44,8 +44,13 @@ router.get('/item/:itemId', async (req, res, next) => {
       .populate('createdBy', 'username')
     if (item.stories.length !== 0) {
       await item.populate('stories')
+      const promises = []
+      item.stories.forEach(story => {
+        promises.push(story.populate('createdBy', 'username'))
+      })
+      await Promise.all(promises)
     }
-    console.log(item)
+    // console.log(item)
     res.render('contents/item-page', { item })
   } catch (error) {
     console.log(error)

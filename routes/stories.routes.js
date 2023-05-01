@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { isLoggedIn } = require('../middleware/route-guards')
 const Story = require('../models/Story.model')
-
+const NostalgicItem = require('../models/NostalgicItem.model')
 
 router.get('/', async (req, res) => {
   let stories = []
@@ -13,9 +13,9 @@ router.get('/', async (req, res) => {
   res.render('contents/stories', { stories })
 })
 
-router.get('/:itemId/stories', (req, res) => {
-  res.render('contents/stories')
-})
+// router.get('/:itemId/stories', (req, res) => {
+//   res.render('contents/stories')
+// })
 
 router.get('/:itemId/create-story', isLoggedIn, (req, res) => {
   res.render('contents/create-story')
@@ -29,22 +29,22 @@ router.post('/:itemId/create-story', async (req, res) => {
 
     // Check if current user has created an other story
     let isExist = await Story.findOne({ itemId, createdBy })
-    console.log("isExist", isExist)
+    console.log('isExist', isExist)
     if (!isExist) {
-      await Story.create({ text, createdBy, itemId })
+      const newStory = await Story.create({ text, createdBy, itemId })
+      const currItem = await NostalgicItem.findById(itemId)
+      await NostalgicItem.findByIdAndUpdate(itemId, {
+        stories: currItem.stories.concat(newStory._id),
+        collectedBy: currItem.collectedBy.concat(createdBy),
+      })
       res.redirect('/profile')
-    }
-    else {
+    } else {
       console.log('You already shared your story about this item !')
       res.redirect('/nostalgia-lib')
     }
-
-  }
-  catch (error) {
+  } catch (error) {
     console.log('error in the create story route', error)
   }
 })
-
-
 
 module.exports = router
