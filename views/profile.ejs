@@ -1,2 +1,22 @@
 <h1>Your profile</h1>
-<a href="/auth/logout"> Log out</a>
+<% stories.forEach(elem =>{%>
+    <div> 
+        <a href="item/<%-elem.itemId._id %>">
+            <%elem.itemId.imgUrl.forEach (elem =>{%>
+                <img src="<%-elem%>" alt="" width="100">
+        </a>
+       
+        <%})%>
+    </div>
+    
+    <div>
+        <%- elem.text%>
+    </div>
+
+    <div><%- elem.createdBy.username %></div> 
+
+
+
+<%})%>
+
+<a href="/auth/logout"> Log out </a>

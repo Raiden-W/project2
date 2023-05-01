@@ -1,1 +1,17 @@
 <h1>List of story</h1>
+<% stories.forEach(elem =>{%>
+    <div> 
+        <a href="item/<%-elem.itemId._id %>">
+            <%elem.itemId.imgUrl.forEach (elem =>{%>
+                <img src="<%-elem%>" alt="" width="100">
+        </a>
+       
+        <%})%>
+    </div>
+    
+    <div>
+        <%- elem.text%>
+    </div>
+
+    <div><%- elem.createdBy.username %></div> 
+    <%})%>
