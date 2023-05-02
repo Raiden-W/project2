@@ -12,20 +12,20 @@
     <h1>your stories</h1>
     <% stories.forEach(elem =>{%>
         <div> 
-            <a href="item/<%-elem.itemId._id %>">
-                <%elem.itemId.imgUrl.forEach (elem =>{%>
-                    <img src="<%-elem%>" alt="" width="100">
+            <a href="item/<%- elem.itemId._id %>">
+                <img src="<%- elem.itemId.imgUrl[0] %>" alt="Item Image" width="100">
             </a>
-        
-            <%})%>
         </div>
         
-        <div>
-            <%- elem.text%>
-        </div>
+        <div><%- elem.text%></div>
 
         <div><%- username %></div> 
-    <%})%>
+        <div>
+            <a href="/stories/delete/<%-elem._id%>">Delete your story</a>
+            <a href="/stories/edit/<%-elem._id%>">edit your story</a>
+        </div>
+
+    <% }) %>
 </div>
 
 <a href="/auth/logout"> Log out </a>

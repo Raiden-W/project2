@@ -4,6 +4,7 @@ const { isLoggedIn } = require('../middleware/route-guards')
 const Story = require('../models/Story.model')
 const NostalgicItem = require('../models/NostalgicItem.model')
 
+// list last stories
 router.get('/', async (req, res) => {
   let stories = []
   stories = await Story.find()
@@ -13,10 +14,7 @@ router.get('/', async (req, res) => {
   res.render('contents/stories', { stories })
 })
 
-// router.get('/:itemId/stories', (req, res) => {
-//   res.render('contents/stories')
-// })
-
+// create
 router.get('/:itemId/create-story', isLoggedIn, (req, res) => {
   res.render('contents/create-story')
 })
@@ -28,9 +26,9 @@ router.post('/:itemId/create-story', async (req, res) => {
     const { itemId } = req.params
 
     // Check if current user has created an other story
-    let isExist = await Story.findOne({ itemId, createdBy })
-    console.log('isExist', isExist)
-    if (!isExist) {
+    let storyExist = await Story.findOne({ itemId, createdBy })
+    console.log('storyExist', storyExist)
+    if (!storyExist) {
       const newStory = await Story.create({ text, createdBy, itemId })
       const currItem = await NostalgicItem.findById(itemId)
       await NostalgicItem.findByIdAndUpdate(itemId, {
@@ -45,6 +43,37 @@ router.post('/:itemId/create-story', async (req, res) => {
   } catch (error) {
     console.log('error in the create story route', error)
   }
+})
+
+//edit
+router.get("/edit/:storyId", async (req, res) => {
+  const storyToEdit = await Story.findById(req.params.storyId)
+  res.render('contents/edit-story', { storyToEdit })
+})
+
+router.post("/edit/:storyId", async (req, res) => {
+  const { storyId } = req.params
+  await Story.findByIdAndUpdate(storyId, req.body, {
+    new: true,
+  })
+  res.redirect('/profile')
+})
+
+//delete
+router.get("/delete/:storyId", async (req, res) => {
+  console.log('this is the story id', req.params)
+  const { storyId } = req.params
+  let storyDeleted = await Story
+    .findByIdAndDelete(storyId)
+    .populate('itemId')
+    .populate('createdBy')
+
+  const currItem = await NostalgicItem.findById(storyDeleted.itemId._id)
+  currItem.stories.remove(storyDeleted._id)
+  currItem.collectedBy.remove(storyDeleted.createdBy._id)
+  currItem.save()
+
+  res.redirect("/profile")
 })
 
 module.exports = router
