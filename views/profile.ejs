@@ -1,3 +1,14 @@
+div id="profile-container">
+    <div id="profile-info">
+        <img src="<%- profile.picUrl %>" alt="Profile Picture" width="150px">
+        <h4><%- username %></h4>
+        <p>Date of birth: <%- profile.birth ? profile.birth : "Unclear" %></p>
+        <p>Introduction: <%- profile.intro %></p>
+    </div>
+    <a href="profile/edit"><button>Edit Profile</button></a>
+</div>
+
+<div id="profile-stories-list">
 <h1>Your profile</h1>
 <% stories.forEach(elem =>{%>
     <div> 
@@ -13,11 +24,13 @@
         <%- elem.text%>
     </div>
 
+    <div><%- elem.createdBy.username %></div> 
     <div>
         <a href="/stories/delete/<%-elem._id%>">Delete your story</a>
         <a href="/stories/edit/<%-elem._id%>">edit your story</a>
     </div>
 
-<%})%>
+    <% }) %>
+</div>
 
 <a href="/auth/logout"> Log out </a>
