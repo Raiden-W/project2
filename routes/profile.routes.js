@@ -26,7 +26,7 @@ router.get('/', isLoggedIn, async (req, res) => {
 router.get('/edit', isLoggedIn, async (req, res) => {
   try {
     const profile = await Profile.findOne({ createdBy: req.session.user._id })
-    res.render('edit-profile', profile)
+    res.render('edit-profile', { profile })
   } catch (error) {
     console.log('error in the profile editing route GET', error)
   }
