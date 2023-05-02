@@ -21,7 +21,7 @@ const storage = new CloudinaryStorage({
 })
 
 const uploader = multer({ storage })
-const destroyer = cloudinary.uploader.destroy
+// const destroyer = cloudinary.uploader.destroy
 
 // module.exports = multer({ storage })
-module.exports = { uploader, destroyer }
+module.exports = { uploader }
