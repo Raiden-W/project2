@@ -46,12 +46,12 @@ router.post('/:itemId/create-story', async (req, res) => {
 })
 
 //edit
-router.get("/edit/:storyId", async (req, res) => {
+router.get('/edit/:storyId', async (req, res) => {
   const storyToEdit = await Story.findById(req.params.storyId)
   res.render('contents/edit-story', { storyToEdit })
 })
 
-router.post("/edit/:storyId", async (req, res) => {
+router.post('/edit/:storyId', async (req, res) => {
   const { storyId } = req.params
   await Story.findByIdAndUpdate(storyId, req.body, {
     new: true,
@@ -60,20 +60,19 @@ router.post("/edit/:storyId", async (req, res) => {
 })
 
 //delete
-router.get("/delete/:storyId", async (req, res) => {
+router.get('/delete/:storyId', async (req, res) => {
   console.log('this is the story id', req.params)
   const { storyId } = req.params
-  let storyDeleted = await Story
-    .findByIdAndDelete(storyId)
-    .populate('itemId')
-    .populate('createdBy')
 
-  const currItem = await NostalgicItem.findById(storyDeleted.itemId._id)
-  currItem.stories.remove(storyDeleted._id)
-  currItem.collectedBy.remove(storyDeleted.createdBy._id)
-  currItem.save()
+  let storyDeleted = await Story.findByIdAndDelete(storyId)
+  console.log(storyDeleted)
 
-  res.redirect("/profile")
+  const currItem = await NostalgicItem.findById(storyDeleted.itemId)
+  await currItem.stories.pull({ stories: storyDeleted._id })
+  await currItem.collectedBy.pull({ collectedBy: storyDeleted.createdBy })
+  await currItem.save()
+
+  res.redirect('/profile')
 })
 
 module.exports = router
