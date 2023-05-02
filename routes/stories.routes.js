@@ -61,16 +61,15 @@ router.post("/edit/:storyId", async (req, res) => {
 
 //delete
 router.get("/delete/:storyId", async (req, res) => {
-  console.log('this is the story id', req.params)
+  console.log('this is the story id', req.params) 
   const { storyId } = req.params
   let storyDeleted = await Story
     .findByIdAndDelete(storyId)
-    .populate('itemId')
-    .populate('createdBy')
+    
 
-  const currItem = await NostalgicItem.findById(storyDeleted.itemId._id)
+  const currItem = await NostalgicItem.findById(storyDeleted.itemId)
   currItem.stories.remove(storyDeleted._id)
-  currItem.collectedBy.remove(storyDeleted.createdBy._id)
+  currItem.collectedBy.remove(storyDeleted.createdBy)
   currItem.save()
 
   res.redirect("/profile")
