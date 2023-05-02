@@ -4,7 +4,7 @@ const { isLoggedIn } = require('../middleware/route-guards')
 const Story = require('../models/Story.model')
 const Profile = require('../models/Profile.model')
 
-const { uploader } = require('../middleware/cloudinary.config.js')
+const { uploader, destroyer } = require('../middleware/cloudinary.config.js')
 
 router.get('/', isLoggedIn, async (req, res) => {
   //stories
@@ -36,9 +36,9 @@ router.get('/edit', isLoggedIn, async (req, res) => {
 router.post('/edit', uploader.single('pic'), async (req, res) => {
   try {
     const currProfile = await Profile.findOne({ createdBy: req.session.user._id })
-    // if (!!currProfile.oldPicFilename && !!req.file) {
-    //   await destroyer(currProfile.oldPicFilename)
-    // }
+    if (!!currProfile.oldPicFilename && !!req.file) {
+      await destroyer(currProfile.oldPicFilename)
+    }
     await Profile.findOneAndUpdate(
       { createdBy: req.session.user._id },
       {
