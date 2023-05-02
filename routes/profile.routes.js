@@ -11,13 +11,12 @@ router.get('/', isLoggedIn, async (req, res) => {
   let stories = []
   stories = await Story.find({ createdBy: req.session.user._id })
     .sort({ createdAt: -1 })
-    .populate('itemId', 'imgUrl')
+    .populate('itemId')
 
   let profile = await Profile.findOne({ createdBy: req.session.user._id })
   if (!profile) {
     profile = await Profile.create({ createdBy: req.session.user._id })
   }
-  console.log(profile)
   res.render('profile', { stories, profile, username: req.session.user.username })
 })
 
