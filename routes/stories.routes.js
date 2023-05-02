@@ -6,26 +6,33 @@ const NostalgicItem = require('../models/NostalgicItem.model')
 
 // list last stories
 router.get('/', async (req, res) => {
-  let stories = []
-  stories = await Story.find()
-    .sort({ createdAt: -1 })
-    .populate('createdBy', 'username')
-    .populate('itemId', 'imgUrl')
-  res.render('contents/stories', { stories })
+  try {
+    const stories = await Story.find()
+      .sort({ createdAt: -1 })
+      .populate('createdBy', 'username')
+      .populate('itemId', 'imgUrl')
+    res.render('contents/stories', { stories })
+  } catch (error) {
+    console.log('error in the displaying stories route GET', error)
+  }
 })
 
 // create
 router.get('/:itemId/create-story', isLoggedIn, async (req, res) => {
-  const createdBy = req.session.user._id
-  const { itemId } = req.params
-  const storyExist = await Story.findOne({ itemId, createdBy })
-  // console.log('storyExist', storyExist)
-  if (!!storyExist) {
-    // console.log('You already shared your story about this item !')
-    await storyExist.populate('itemId')
-    res.redirect(`/profile/#${storyExist.itemId.name}`)
-  } else {
-    res.render('contents/create-story')
+  try {
+    const createdBy = req.session.user._id
+    const { itemId } = req.params
+    const storyExist = await Story.findOne({ itemId, createdBy })
+    // console.log('storyExist', storyExist)
+    if (!!storyExist) {
+      // console.log('You already shared your story about this item !')
+      await storyExist.populate('itemId')
+      res.redirect(`/profile/#${storyExist.itemId.name}`)
+    } else {
+      res.render('contents/create-story')
+    }
+  } catch (error) {
+    console.log('error in the create story route GET', error)
   }
 })
 
@@ -43,7 +50,7 @@ router.post('/:itemId/create-story', async (req, res) => {
     })
     res.redirect('/profile')
   } catch (error) {
-    console.log('error in the create story route', error)
+    console.log('error in the create story route POST', error)
   }
 })
 
