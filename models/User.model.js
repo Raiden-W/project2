@@ -12,9 +12,9 @@ const user = new Schema(
     password: {
       type: String,
       required: true
-    }   
+    }
   },
-);
+)
 
 const User = model('User', user)
 

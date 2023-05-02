@@ -1,7 +1,31 @@
-<h1>Your profile</h1>
-<div>
-    myFirstName
+<div id="profile-container">
+    <h1>User Board</h1>
+    <div id="profile-info">
+        <img src="<%- profile.picUrl %>" alt="Profile Picture" width="150px">
+        <h4><%- username %></h4>
+        <p>Date of birth: <%- profile.birth ? profile.birth : "Unclear" %></p>
+        <p>Introduction: <%- profile.intro %></p>
+    </div>
+    <a href="profile/edit"><button>Edit Profile</button></a>
 </div>
-<div>
-    myLastname
+
+<div id="profile-stories-list">
+<h1>Your stories</h1>
+    <% stories.forEach(story =>{ %>
+        <article id="<%- story.itemId.name %>">
+            <a href="item/<%- story.itemId._id %>">
+                <img src="<%- story.itemId.imgUrl[0] %>" alt="Item Image" width="100">
+            </a>
+        
+            <p><%- story.text %></p>
+
+            <h6>By <%- username %></h6> 
+            <div>
+                <a href="/stories/delete/<%-story._id%>">Delete your story</a>
+                <a href="/stories/edit/<%-story._id%>">edit your story</a>
+            </div>
+        </article>
+    <% }) %>
 </div>
+
+<a href="/auth/logout"> Log out </a>

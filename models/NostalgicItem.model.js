@@ -28,6 +28,10 @@ const nostalgicItem = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
+    stories: {
+      type: [Schema.Types.ObjectId],
+      ref: 'Story',
+    },
   },
 
   {

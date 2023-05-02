@@ -1,0 +1,17 @@
+    <nav>
+    <div id="nav-leftside">
+        <a id = "logo" href="/"><img id="logo-img" src="" alt="logo image" /></a>
+        <a  href="/nostalgia-lib">Nostalgia Libary</a>
+        <a  href="/stories">Stories</a>
+    </div>
+    <div id="nav-rightside">
+        <% if( typeof(user) !="undefined"){%>
+        <a href="/profile"><%- user.username %>  </a>
+        <% } else {%>
+        <a href="/auth/login">Login</a>
+        <a href="/auth/signup">Sign up</a>
+        <%} %>
+    </div>
+</nav>
+
+

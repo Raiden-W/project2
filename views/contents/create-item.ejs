@@ -1,7 +1,9 @@
-<form action="/create-item" method="POST">
-    <label>Item Name:<input name="name"></label>
-    <label>Item Image:<input name="imgUrl"></label>
-    <label>Short Description:<input name="shortInfo"></label>
-    <label>Complete Description:<input name="longInfo"></label>
+<form action="/create-item" method="POST" enctype="multipart/form-data">
+    <label>Item name:<input name="name"></label>
+    <label>Short description:<input name="shortInfo"></label>
+    <label>Complete description:<input name="longInfo"></label>
+    <label>Choose up to 4 images of your item to upload:
+        <input type="file" name="img" accept="image/png, image/jpeg" multiple>
+    </label>
     <button type="submit">Create Item</button>    
 </form>

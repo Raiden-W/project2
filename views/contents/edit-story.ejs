@@ -1,0 +1,6 @@
+<h1>Edit your story </h1>
+
+<form method="post" action="/stories/edit/<%-storyToEdit._id%>">
+    <div><input type="text" name = "text" value="<%-storyToEdit.text%>"></div>
+    <button type="submit"> Update your story</button>
+</form>

@@ -1,14 +1,14 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const bcryptjs = require("bcryptjs")
-const User = require('../models/User.model');
+const User = require('../models/User.model')
 const pwdRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/
-const { isLoggedIn, isLoggedOut } = require('../middleware/route-guards');
+const { isLoggedOut } = require('../middleware/route-guards')
 
 //Get signup page
-router.get('/signup',isLoggedOut, (req, res) => {
-    res.render('auth/signup');
-});
+router.get('/signup', isLoggedOut, (req, res) => {
+    res.render('auth/signup')
+})
 
 router.post('/signup', async (req, res) => {
     try {
@@ -43,9 +43,9 @@ router.post('/signup', async (req, res) => {
 })
 
 // Get login page
-router.get('/login',isLoggedOut, (req, res) => {
-    res.render('auth/login');
-});
+router.get('/login', isLoggedOut, (req, res) => {
+    res.render('auth/login')
+})
 
 router.post('/login', async (req, res) => {
 
@@ -53,8 +53,8 @@ router.post('/login', async (req, res) => {
         const existingUser = await User.findOne({ username: req.body.username })
         if (existingUser) {
             if (bcryptjs.compareSync(req.body.password, existingUser.password)) {
-                req.session.user = { username: req.body.username }
-                res.redirect('/profile');
+                req.session.user = { username: req.body.username, _id: existingUser._id }
+                res.redirect('/profile')
             }
             else {
                 res.render('auth/login')
@@ -66,6 +66,12 @@ router.post('/login', async (req, res) => {
         }
     }
     catch (err) { console.log("Error in login route", err) }
+})
+
+
+router.get('/logout', (req, res) => {
+    req.session.destroy()
+    res.redirect('/auth/login')
 })
 
 module.exports = router;
