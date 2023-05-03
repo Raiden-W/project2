@@ -2,11 +2,8 @@
 <% stories.forEach(story =>{%>
     <div> 
         <a href="item/<%-story.itemId._id %>">
-            <%story.itemId.imgUrl.forEach (story =>{%>
-                <img src="<%-story%>" alt="" width="100">
+            <img src="<%- story.itemId.imgUrl[0] %>" alt="item image" width="100">     
         </a>
-       
-        <%})%>
     </div>
     <h5><%- story.itemId.name %></h5>
     <div>
@@ -16,4 +13,4 @@
     <p>By: 
         <a href="/profile/<%- story.createdBy._id %>"><%- story.createdBy.username %></a>
     </p>
-    <%})%>
+<% }) %>

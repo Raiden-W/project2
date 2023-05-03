@@ -21,7 +21,7 @@ router.post('/create-item', uploader.array('img', 4), async (req, res, next) => 
   try {
     const newItemToDB = {
       name: req.body.name,
-      imgUrl: req.files.map(file => file.path),
+      imgUrl: req.files ? (req.files.length !== 0 ? req.files.map(file => file.path) : ['']) : [''],
       shortInfo: req.body.shortInfo,
       longInfo: req.body.longInfo,
       collectedBy: [],
