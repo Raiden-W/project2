@@ -6,8 +6,12 @@
     </div>
     <h4 id="item-page-name"><%- item.name %></h4>
     <p id="item-long-info"><%- item.longInfo %></p>
-    <% if(!!item.createdBy) { %>  
-        <p>Added by <%- item.createdBy.username %></p>
+    <% if(!!item.createdBy) { %>
+        <p>Item added by
+            <a href="/profile/<%- item.createdBy._id %>">
+                <%- item.createdBy.username %>
+            </a>
+        </p>
     <% } %>
     <div>
         <p>Collected by <%- item.collectedBy.length %> users</p>
@@ -16,8 +20,8 @@
     <% if(item.stories.length !== 0) { %>  
         <div class="item-page-stories-container">
             <% item.stories.forEach(story => { %>
-            <p>By user <%- story.createdBy.username %></p>
-            <p><%- story.text %></p>
+                <p>By user <a href="/profile/<%- story.createdBy._id %>"><%- story.createdBy.username %></a></p>
+                <p><%- story.text %></p>
             <% }) %> 
         </div> 
     <% } else { %> 
