@@ -1,6 +1,25 @@
-<h1>Edit your story </h1>
-
+<h1>Your story about <%- storyToEdit.itemId.name %></h1>
+<img src="<%- storyToEdit.itemId.imgUrl %>" alt="<%- storyToEdit.itemId.name %> image" width="150px">
 <form method="post" action="/stories/edit/<%-storyToEdit._id%>">
     <div><input type="text" name = "text" value="<%-storyToEdit.text%>"></div>
-    <button type="submit"> Update your story</button>
+    <!-- Button trigger modal -->
+    <button type="submit" id="edit-story-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-story-modal">
+        Update your story!
+    </button>
 </form>
+
+<!-- Modal - Be ready to unfold it. It is super bulky.-->
+<div class="modal fade" id="edit-story-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                You have successfully edited your story about <%- storyToEdit.itemId.name  %>
+            </div>
+            <div class="modal-footer">
+                <a href="/profile/#<%- storyToEdit.itemId.name %>">
+                    <button type="button" class="btn btn-primary">Check your story in profile!</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
