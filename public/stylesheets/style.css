@@ -13,18 +13,18 @@
 }
 
 body {
-  font-size: 14px;  
+  font-size: 14px;
   font-family: 'Roboto-Medium';
 }
 
 nav {
   font-family: 'Stora';
-  border-bottom: 2px solid black;
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: 18px;
   padding: 18px;
-  background-image: linear-gradient(#fff, #444444bd);
+  border: black solid;
+  border-width: 2px 0px;
 }
 
 nav a {
@@ -42,31 +42,45 @@ nav a:focus {
 
 .nav-rightside a {
   float: right;
-  color:#f9148e;  
+  color: #f9148e;
 }
 
 #home-sec {
   display: flex;
   align-items: center;
-  margin-top: 200px;
+  margin-top: 90px;
   text-align: center;
   flex-direction: column;
 }
 
 #titleHomePage {
   font-family: 'StoraLight';
-  font-size: 50px;
+  font-size: 75px;
   font-style: italic;
   word-spacing: 24px;
 }
 
 #CheckItemsBtn {
-  padding: 26px;
+  padding: 40px;
   background-color: #ffffff;
   color: blue;
   box-shadow: -15px 10px 5px 0px #f9148e, -30px 20px 5px 0px #88c35a;
   border: blue solid;
   opacity: 0.9;
   border-width: 2px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+/* nostalgia Lib */
+#nostalgia-lib-sec{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+img {
+  width: 200px;
+  height: 150px;
 }
 

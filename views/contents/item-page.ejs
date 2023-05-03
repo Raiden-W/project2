@@ -1,7 +1,7 @@
 <div>
     <div id="item-page-img-container">
         <% item.imgUrl.forEach(url => { %>
-            <img class="item-page-img" src="<%- url %>" width="200px" alt="<%- item.name %> image">
+            <img class="item-page-img" src="<%- url %>" alt="<%- item.name %> image">
         <% }) %>      
     </div>
     <h4 id="item-page-name"><%- item.name %></h4>
