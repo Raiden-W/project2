@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const NostalgicItem = require('../models/NostalgicItem.model.js')
-
+const { isLoggedIn } = require('../middleware/route-guards')
 const { uploader } = require('../middleware/cloudinary.config.js')
 
 router.get('/nostalgia-lib', async (req, res, next) => {
@@ -13,7 +13,7 @@ router.get('/nostalgia-lib', async (req, res, next) => {
   }
 })
 
-router.get('/create-item', (req, res, next) => {
+router.get('/create-item', isLoggedIn, (req, res, next) => {
   res.render('contents/create-item')
 })
 

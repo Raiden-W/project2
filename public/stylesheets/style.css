@@ -77,6 +77,7 @@ nav a:focus {
 #nostalgia-lib-sec{
   display: flex;
   justify-content: space-evenly;
+  margin-top: 50px;
 }
 
 img {
@@ -84,3 +85,6 @@ img {
   height: 150px;
 }
 
+#createItemBtn{
+position: fixed;
+}

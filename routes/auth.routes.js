@@ -68,6 +68,10 @@ router.post('/login', async (req, res) => {
     catch (err) { console.log("Error in login route", err) }
 })
 
+router.get('/login', isLoggedOut, (req, res) => {
+    res.render('auth/signup')
+})
+
 
 router.get('/logout', (req, res) => {
     req.session.destroy()
