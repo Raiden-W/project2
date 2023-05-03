@@ -1,65 +1,72 @@
-body {
-  padding: 50px;
-  font-family: 'Poppins', sans-serif;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  margin: 0;
-  padding: 50px;
-  padding-left: 40px;
+@font-face {
+  font-family: 'StoraLight';
+  src: url(fonts/StoraLight.ttf);
+}
+@font-face {
+  font-family: 'Stora';
+  src: url(fonts/Stora.ttf);
+}
 
-  background-color: white;
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url(fonts/Roboto-Medium.ttf);
+}
+
+body {
+  font-size: 14px;  
+  font-family: 'Roboto-Medium';
 }
 
 nav {
-  border: 10px;
+  font-family: 'Stora';
+  border-bottom: 2px solid black;
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 14px;
+  padding: 18px;
+  background-image: linear-gradient(#fff, #444444bd);
 }
 
-#nav-leftside a {
-  color: blue;
+nav a {
+  color: black;
   text-decoration: none;
-  border: 2px solid blue;
-  padding: 16px;
-  margin: 100px;
-  margin-left: 0;
-  box-shadow: 6px 6px 0px blue;
-}
-
-#nav-leftside a:hover,
-#nav-leftside a:focus {
-  background-color: #ffffff;
-  color: #333;
-}
-
-#nav-rightside a {
-  color: blue;
-  background-color: rgb(255, 255, 242);
-  text-decoration: none;
-  border: 2px solid blue;
-  border-radius: 8px;
   padding: 16px;
   margin: 20px;
-  margin-right: 0;
-  box-shadow:  6px 6px 0px blue;
-  transition: background-color 250ms;
+  transition: color 250ms;
 }
-#nav-rightside a:hover,
-#nav-rightside a:focus {
-  background-color: #fff;
-  color: #333;
+
+nav a:hover,
+nav a:focus {
+  color: black;
+}
+
+.nav-rightside a {
+  float: right;
+  color:#f9148e;  
 }
 
 #home-sec {
-  text-align: center;
+  display: flex;
+  align-items: center;
   margin-top: 200px;
-}
-h1 {
-  color: 15px;
+  text-align: center;
+  flex-direction: column;
 }
 
-footer {
-  margin-top: 200px;
+#titleHomePage {
+  font-family: 'StoraLight';
+  font-size: 50px;
+  font-style: italic;
+  word-spacing: 24px;
 }
+
+#CheckItemsBtn {
+  padding: 26px;
+  background-color: #ffffff;
+  color: blue;
+  box-shadow: -15px 10px 5px 0px #f9148e, -30px 20px 5px 0px #88c35a;
+  border: blue solid;
+  opacity: 0.9;
+  border-width: 2px;
+}
+
