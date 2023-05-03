@@ -5,8 +5,11 @@
     <h4 class="item-lib-name"><%- item.name %></h4>
 </a>
 
-<p class="item-short-info"><%- item.shortInfo %></p>
-<div>
+<div id="heart-CollectedBy">
     <p>Collected by <%- item.collectedBy.length %> users</p>
-    <a href="stories/<%- item._id %>/create-story"><img id="heart-icon"src=""  alt="heart button image"></a>
+    <a href="stories/<%- item._id %>/create-story">
 </div>
+     
+
+<p class="item-short-info"><%- item.shortInfo %></p>
+

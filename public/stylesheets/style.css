@@ -88,3 +88,8 @@ img {
 #createItemBtn{
 position: fixed;
 }
+
+#heart-CollectedBy{
+  display: flex;
+  align-items: center;
+}
