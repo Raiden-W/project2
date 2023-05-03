@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     const stories = await Story.find()
       .sort({ createdAt: -1 })
       .populate('createdBy', 'username')
-      .populate('itemId', 'imgUrl')
+      .populate('itemId')
     res.render('contents/stories', { stories })
   } catch (error) {
     console.log('error in the displaying stories route GET', error)
@@ -22,14 +22,15 @@ router.get('/:itemId/create-story', isLoggedIn, async (req, res) => {
   try {
     const createdBy = req.session.user._id
     const { itemId } = req.params
+    const item = await NostalgicItem.findById(itemId)
     const storyExist = await Story.findOne({ itemId, createdBy })
     // console.log('storyExist', storyExist)
     if (!!storyExist) {
       // console.log('You already shared your story about this item !')
-      await storyExist.populate('itemId')
-      res.redirect(`/profile/#${storyExist.itemId.name}`)
+      // await storyExist.populate('itemId')
+      res.redirect(`/profile/#${item.name}`)
     } else {
-      res.render('contents/create-story')
+      res.render('contents/create-story', { item })
     }
   } catch (error) {
     console.log('error in the create story route GET', error)
@@ -48,7 +49,9 @@ router.post('/:itemId/create-story', async (req, res) => {
       stories: currItem.stories.concat(newStory._id),
       collectedBy: currItem.collectedBy.concat(createdBy),
     })
-    res.redirect('/profile')
+    setTimeout(() => {
+      res.redirect(`/profile/#${currItem.name}`)
+    }, 1500)
   } catch (error) {
     console.log('error in the create story route POST', error)
   }
@@ -57,7 +60,7 @@ router.post('/:itemId/create-story', async (req, res) => {
 //edit
 router.get('/edit/:storyId', async (req, res) => {
   try {
-    const storyToEdit = await Story.findById(req.params.storyId)
+    const storyToEdit = await Story.findById(req.params.storyId).populate('itemId')
     res.render('contents/edit-story', { storyToEdit })
   } catch (error) {
     console.log('error in the editing story route GET', error)
@@ -67,10 +70,10 @@ router.get('/edit/:storyId', async (req, res) => {
 router.post('/edit/:storyId', async (req, res) => {
   try {
     const { storyId } = req.params
-    await Story.findByIdAndUpdate(storyId, req.body, {
-      new: true,
-    })
-    res.redirect('/profile')
+    const story = await Story.findByIdAndUpdate(storyId, req.body).populate('itemId')
+    setTimeout(() => {
+      res.redirect(`/profile/#${story.itemId.name}`)
+    }, 1500)
   } catch (error) {
     console.log('error in the editing story route POST', error)
   }
