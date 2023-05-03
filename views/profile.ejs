@@ -6,10 +6,12 @@
         <p>Date of Birth: <%- profile.birth ? profile.birth : "Unclear" %></p>
         <p>Introduction: <%- profile.intro %></p>
         <p>Personal Collection:</p>
-        <ul>
+        <ul class="list-group">
             <% stories.forEach(story =>{ %>
                 <li>
-                    <a href="#<%- story.itemId.name %>"><%- story.itemId.name %></a>
+                    <a href="#<%- story.itemId.name %>" class="list-group-item list-group-item-action">
+                        <%- story.itemId.name %>
+                    </a>
                 </li>
             <% }) %>
         </ul>
@@ -25,13 +27,33 @@
         <article id="<%- story.itemId.name %>">
             <a href="/item/<%- story.itemId._id %>">
                 <img src="<%- story.itemId.imgUrl[0] %>" alt="Item Image" width="100">
-            </a>      
+            </a>
+            <h5><%- story.itemId.name %></h5>
             <p><%- story.text %></p>
             <h6>By <%- username %></h6> 
             <% if(isMyProfile) { %>
                 <div>
-                    <a href="/stories/delete/<%-story._id%>">Delete your story</a>
-                    <a href="/stories/edit/<%-story._id%>">edit your story</a>
+                    <a href="/stories/edit/<%-story._id%>">Edit</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profile-delete-modal">
+                        Delete
+                    </button>
+                    <!-- Modal - Be ready to unfold it. It is super bulky.-->
+                    <div class="modal fade" id="profile-delete-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    Do you really want to delete this story?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/stories/delete/<%-story._id%>">
+                                        <button type="button" class="btn btn-secondary">Confirm</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             <% } %>
         </article>
@@ -45,4 +67,6 @@
 
 <% if(isMyProfile) { %>
     <a href="/auth/logout"> Log out </a>
-<% } %> 
+<% } %>
+
+

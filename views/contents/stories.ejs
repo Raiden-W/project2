@@ -8,10 +8,12 @@
        
         <%})%>
     </div>
-    
+    <h5><%- story.itemId.name %></h5>
     <div>
-        <%- story.text%>
+        <%- story.text %>
     </div>
 
-    <a href="/profile/<%- story.createdBy._id %>"><%- story.createdBy.username %></a>
+    <p>By: 
+        <a href="/profile/<%- story.createdBy._id %>"><%- story.createdBy.username %></a>
+    </p>
     <%})%>

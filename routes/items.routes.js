@@ -29,7 +29,9 @@ router.post('/create-item', uploader.array('img', 4), async (req, res, next) => 
       stories: [],
     }
     const newItem = await NostalgicItem.create(newItemToDB)
-    res.redirect(`/item/${newItem._id}`)
+    setTimeout(() => {
+      res.redirect(`/item/${newItem._id}`)
+    }, 1500)
   } catch (error) {
     console.log(error)
   }
