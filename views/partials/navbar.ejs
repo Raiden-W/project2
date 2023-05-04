@@ -1,10 +1,14 @@
-    <nav>
-    <div id="nav-leftside">
+
+<nav>
+    <div class="container d-flex justify-content-between">
+    <div class="d-flex align-items-center">
         <a  href="/nostalgia-lib">Nostalgia Libary</a>
-        <a  href="/stories">Stories</a>
-        <a id = "logo" href="/"><img id="logo-img" src="" alt="logo image" /></a>
+        <a  href="/stories">Stories</a>    
     </div>
-    <div id="nav-rightside">
+    <div class="logo-website">
+        <a id="logo" href="/"><img id="logo-img" src="../../images/logo.png" alt="logo image" /></a>
+    </div>
+    <div class="d-flex align-items-center">
         <% if( typeof(user) !="undefined"){%>
         <a href="/profile"><%- user.username %>  </a>
         <% } else {%>
@@ -12,6 +16,7 @@
         <a href="/auth/signup">Sign up</a>
         <%} %>
     </div>
+</div>
 </nav>
 
 

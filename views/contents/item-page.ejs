@@ -1,15 +1,22 @@
-<div>
-    <div id="item-page-img-container">
-        <% item.imgUrl.forEach(url => { %>
-            <img class="item-page-img" src="<%- url %>" alt="<%- item.name %> image">
-        <% }) %>      
+
+<div id = container-item>    
+<div class="itemPage">
+    <div class="windowStyle">
+        
+        <p><span class="windowStyle1">about</span> <span class="windowStyle2"> --- </span><span class="windowStyle3"> X</span>  </p>
     </div>
+    <div>
+        <div class="text-center">
+            <% item.imgUrl.forEach(url => { %>
+                <img class="itemImg" src="<%- url %>" alt="<%- item.name %> image">
+            <% }) %>      
+        </div>
 
-    <h4 id="item-page-name"><%- item.name %></h4>
-
-    <div id="heart-CollectedBy">
-        <a href="/stories/<%- item._id %>/create-story"> </a>
-        <p>Collected by <%- item.collectedBy.length %> users</p>  
+            <h5 class="card-title"><%- item.name %></h4>    <div class="text-end">
+                <a href="/stories/<%- item._id %>/create-story" class="btn btn-outline-primary">
+                    <%- item.collectedBy.length %>  <i class="fa-solid fa-heart"></i>  
+                 </a>
+        </div> 
     </div>
 
 
@@ -34,4 +41,5 @@
     <% } else { %> 
         <p>No stories here yet.</p>
     <% } %> 
+</div>
 </div>
