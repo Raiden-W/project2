@@ -1,11 +1,17 @@
-<a href="/item/<%- item._id %>">
-    <img class="item-lib-img" src="<%- item.imgUrl[0] %>" width="300px" alt="<%- item.name %> image">
-</a>
-<a href="/item/<%- item._id %>">
-    <h4 class="item-lib-name"><%- item.name %></h4>
-</a>
-<p class="item-short-info"><%- item.shortInfo %></p>
-<div>
-    <p>Collected by <%- item.collectedBy.length %> users</p>
-    <a href="stories/<%- item._id %>/create-story"><img src=""" alt="heart button image"></a>
+
+<div class="card">
+    <a href="/item/<%- item._id %>">
+        <img class="card-img-top" src="<%- item.imgUrl[0] %>" alt="<%- item.name %> image">
+    </a>
+    <div class="card-body">
+        <h5 class="card-title"><%- item.name %></h5>
+        <p class="card-text"><%- item.shortInfo %></p> 
+     
+        <div class="text-end">
+            <a href="/stories/<%- item._id %>/create-story" class="btn btn-outline-primary">
+                <%- item.collectedBy.length %>  <i class="fa-solid fa-heart"></i>  
+             </a>
+        </div>
+    </div>      
 </div>
+
