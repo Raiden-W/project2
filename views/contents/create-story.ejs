@@ -1,7 +1,27 @@
-<h1>Add a story</h1>
+<h1>Add a story about <%- item.name %></h1>
+<img src="<%- item.imgUrl %>" alt="<%- item.name %> image" width="150px">
 <form method="post" action="create-story">
-    <input type="text" name="text" placeholder="Tell us your story">
-    <button type="submit"> Share your story!</button>
+    <input type="text" name="text" value="Tell us your story...">
+    <!-- Button trigger modal -->
+    <button type="submit" id="create-story-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-story-modal">
+        Share your story!
+    </button>
 </form>
+
+<!-- Modal - Be ready to unfold it. It is super bulky.-->
+<div class="modal fade" id="create-story-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                You have successfully created a story about <%- item.name  %>
+            </div>
+            <div class="modal-footer">
+                <a href="/profile/#<%- item.name %>">
+                    <button type="button" class="btn btn-primary">Check your story in profile!</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 

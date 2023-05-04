@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const NostalgicItem = require('../models/NostalgicItem.model.js')
-
+const { isLoggedIn } = require('../middleware/route-guards')
 const { uploader } = require('../middleware/cloudinary.config.js')
 
 router.get('/nostalgia-lib', async (req, res, next) => {
@@ -13,7 +13,7 @@ router.get('/nostalgia-lib', async (req, res, next) => {
   }
 })
 
-router.get('/create-item', (req, res, next) => {
+router.get('/create-item', isLoggedIn, (req, res, next) => {
   res.render('contents/create-item')
 })
 
@@ -21,7 +21,7 @@ router.post('/create-item', uploader.array('img', 4), async (req, res, next) => 
   try {
     const newItemToDB = {
       name: req.body.name,
-      imgUrl: req.files.map(file => file.path),
+      imgUrl: req.files ? (req.files.length !== 0 ? req.files.map(file => file.path) : ['']) : [''],
       shortInfo: req.body.shortInfo,
       longInfo: req.body.longInfo,
       collectedBy: [],
@@ -29,7 +29,9 @@ router.post('/create-item', uploader.array('img', 4), async (req, res, next) => 
       stories: [],
     }
     const newItem = await NostalgicItem.create(newItemToDB)
-    res.redirect(`/item/${newItem._id}`)
+    setTimeout(() => {
+      res.redirect(`/item/${newItem._id}`)
+    }, 1500)
   } catch (error) {
     console.log(error)
   }

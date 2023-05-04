@@ -1,31 +1,73 @@
+
 <div id="profile-container">
-    <h1>User Board</h1>
+    <h2>User Board</h2>
     <div id="profile-info">
         <img src="<%- profile.picUrl %>" alt="Profile Picture" width="150px">
         <h4><%- username %></h4>
-        <p>Date of birth: <%- profile.birth ? profile.birth : "Unclear" %></p>
+        <p>Date of Birth: <%- profile.birth ? profile.birth : "Unclear" %></p>
         <p>Introduction: <%- profile.intro %></p>
+        <p>Personal Collection:</p>
+        <ul class="list-group">
+            <% stories.forEach(story =>{ %>
+                <li>
+                    <a href="#<%- story.itemId.name %>" class="list-group-item list-group-item-action">
+                        <%- story.itemId.name %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
     </div>
-    <a href="profile/edit"><button>Edit Profile</button></a>
+    <% if(isMyProfile) { %>
+        <a class="btn btn-outline-primary" href="/profile/edit">Edit Profile</a>
+    <% } %>  
 </div>
 
 <div id="profile-stories-list">
-<h1>Your stories</h1>
+<h2><%- isMyProfile ? "My stories" : `${username}'s stories`%></h2>
     <% stories.forEach(story =>{ %>
         <article id="<%- story.itemId.name %>">
-            <a href="item/<%- story.itemId._id %>">
+            <a href="/item/<%- story.itemId._id %>">
                 <img src="<%- story.itemId.imgUrl[0] %>" alt="Item Image" width="100">
             </a>
-        
+            <h5><%- story.itemId.name %></h5>
             <p><%- story.text %></p>
-
             <h6>By <%- username %></h6> 
-            <div>
-                <a href="/stories/delete/<%-story._id%>">Delete your story</a>
-                <a href="/stories/edit/<%-story._id%>">edit your story</a>
-            </div>
+            <% if(isMyProfile) { %>
+                <div>
+                    <a href="/stories/edit/<%-story._id%>">Edit</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profile-delete-modal">
+                        Delete
+                    </button>
+                    <!-- Modal - Be ready to unfold it. It is super bulky.-->
+                    <div class="modal fade" id="profile-delete-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    Do you really want to delete this story?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/stories/delete/<%-story._id%>">
+                                        <button type="button" class="btn btn-secondary">Confirm</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
         </article>
     <% }) %>
+    <% if(isMyProfile && stories.length === 0) { %>
+        <h4>There is no stories yet. Go to create one!</h4>
+        <a href="/nostalgia-lib"><button>Nostalgia Library</button></a>
+    <% } %> 
+    
 </div>
 
-<a href="/auth/logout"> Log out </a>
+<% if(isMyProfile) { %>
+    <a href="/auth/logout"> Log out </a>
+<% } %>
+
+

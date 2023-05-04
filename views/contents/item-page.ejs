@@ -1,26 +1,45 @@
-<div>
-    <div id="item-page-img-container">
-        <% item.imgUrl.forEach(url => { %>
-            <img class="item-page-img" src="<%- url %>" width="200px" alt="<%- item.name %> image">
-        <% }) %>      
+
+<div id = container-item>    
+<div class="itemPage">
+    <div class="windowStyle">
+        
+        <p><span class="windowStyle1">about</span> <span class="windowStyle2"> --- </span><span class="windowStyle3"> X</span>  </p>
     </div>
-    <h4 id="item-page-name"><%- item.name %></h4>
-    <p id="item-long-info"><%- item.longInfo %></p>
-    <% if(!!item.createdBy) { %>  
-        <p>Added by <%- item.createdBy.username %></p>
-    <% } %>
     <div>
-        <p>Collected by <%- item.collectedBy.length %> users</p>
-        <a href="/stories/<%- item._id %>/create-story"><img src="" alt="heart button image"></a>
+        <div class="text-center">
+            <% item.imgUrl.forEach(url => { %>
+                <img class="itemImg" src="<%- url %>" alt="<%- item.name %> image">
+            <% }) %>      
+        </div>
+
+            <h5 class="card-title"><%- item.name %></h4>    <div class="text-end">
+                <a href="/stories/<%- item._id %>/create-story" class="btn btn-outline-primary">
+                    <%- item.collectedBy.length %>  <i class="fa-solid fa-heart"></i>  
+                 </a>
+        </div> 
     </div>
+
+
+    <p id="item-long-info"><%- item.longInfo %></p>
+    <% if(!!item.createdBy) { %>
+        <p>Item added by
+            <a href="/profile/<%- item.createdBy._id %>">
+                <%- item.createdBy.username %>
+            </a>
+        </p>
+    <% } %>
+
+
+
     <% if(item.stories.length !== 0) { %>  
         <div class="item-page-stories-container">
             <% item.stories.forEach(story => { %>
-            <p>By user <%- story.createdBy.username %></p>
-            <p><%- story.text %></p>
+                <p>By user <a href="/profile/<%- story.createdBy._id %>"><%- story.createdBy.username %></a></p>
+                <p><%- story.text %></p>
             <% }) %> 
         </div> 
     <% } else { %> 
         <p>No stories here yet.</p>
     <% } %> 
+</div>
 </div>

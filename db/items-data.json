@@ -2,10 +2,10 @@
   {
     "name": "Furby",
     "imgUrl": [
-      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1682693782/nostalgic%20items/furby-0_qrxs64.jpg"
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128039/nostalgic%20items/furby_jum6jw.png"
     ],
     "shortInfo": "Furby talks Furbish.",
-    "longInfo": "Furby talks Furbish.",
+    "longInfo": "Some say furbies are actually aliens posing as mechanical toys lurking around humans.",
     "collectedBy": [],
     "createdBy": {},
     "stories": []
@@ -13,10 +13,10 @@
   {
     "name": "Nokia 3310",
     "imgUrl": [
-      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1682693783/nostalgic%20items/nokia-3310-0_soejqx.png"
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128039/nostalgic%20items/nokia_dldebi.png"
     ],
     "shortInfo": "What an acient Nokia.",
-    "longInfo": "What an acient Nokia.",
+    "longInfo": "Can you still navigate its operation system?",
     "collectedBy": [],
     "createdBy": {},
     "stories": []
@@ -24,10 +24,10 @@
   {
     "name": "Hoop Rolling",
     "imgUrl": [
-      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1682693782/nostalgic%20items/hoop-rolling-0_qcioid.jpg"
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128038/nostalgic%20items/hoop_rolling_eorssg.png"
     ],
-    "shortInfo": "Simple joy to run with hoop",
-    "longInfo": "Simple joy to run with hoop",
+    "shortInfo": "Simple joy to run with hoop.",
+    "longInfo": "Actually a very good sort of cardio fitness.",
     "collectedBy": [],
     "createdBy": {},
     "stories": []
@@ -35,7 +35,7 @@
   {
     "name": "Waterful Ring Toss",
     "imgUrl": [
-      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1682693782/nostalgic%20items/waterful-ring-toss-0_izkheo.jpg"
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128038/nostalgic%20items/waterful_ring_toss_okd2tf.png"
     ],
     "shortInfo": "Digital game without digital.",
     "longInfo": "Digital game without digita.",
@@ -46,10 +46,109 @@
   {
     "name": "iPod",
     "imgUrl": [
-      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1682693783/nostalgic%20items/ipod-0_rhmika.png"
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128039/nostalgic%20items/ipod_uc1xie.png"
     ],
     "shortInfo": "The wheel-click is the soul.",
     "longInfo": "The wheel-click is the soul.",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "Beyblade Burst",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128038/nostalgic%20items/beyblade_burst_udzwys.png"
+    ],
+    "shortInfo": "It's about speed and spinning!",
+    "longInfo": "Children still play them nowdays btw.",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "CD Player",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128039/nostalgic%20items/cd_player_f4zxuy.png"
+    ],
+    "shortInfo": "Still nice to have one.",
+    "longInfo": "How many CD albums do you have in your storage room? They sound better than streaming service!",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "Clockwork Frog",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128038/nostalgic%20items/clockwork_frog_jfpkfh.png"
+    ],
+    "shortInfo": "Jump high! And does not cost electricity.",
+    "longInfo": "Actually there were more animal models of this type of toy but whatever FROG is the most classic one.",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "Fishing Toy",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128038/nostalgic%20items/fishing_toy_ko8say.png"
+    ],
+    "shortInfo": "Although you are fising plastic fishes.",
+    "longInfo": "Although you are fising plastic fishes, the fun is the same... almost the same...",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "Game Boy",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128038/nostalgic%20items/gameboy_qzbx9v.png"
+    ],
+    "shortInfo": "Who was so lucky to have these game consoles??",
+    "longInfo": "Nintendo's legendary creations were always much fun.",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "Magnetic Drawing Board",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128039/nostalgic%20items/magnetic_drawing_board_prhlzs.png"
+    ],
+    "shortInfo": "This is almost a stationary.",
+    "longInfo": "You can play with a stationary like this instead of using it to study if you want.",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "Mini 4WD",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128039/nostalgic%20items/mini_4wd_r2uc3a.png"
+    ],
+    "shortInfo": "It is always with the manga.",
+    "longInfo": "The manga actually lies because your 4WD could not suddenly fly up when you orally command it.",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "Tamagotchi",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128039/nostalgic%20items/tamagotchi_ms0v4q.png"
+    ],
+    "shortInfo": "Maybe one of the very early ideas about Metaverse.",
+    "longInfo": "So pretty little thingy to hang on your jeans and add some flavour to your outfit! And if I remember the little digital creature can even poo...",
+    "collectedBy": [],
+    "createdBy": {},
+    "stories": []
+  },
+  {
+    "name": "Walkman",
+    "imgUrl": [
+      "https://res.cloudinary.com/duo0ik2tp/image/upload/v1683128038/nostalgic%20items/walkman_emd788.png"
+    ],
+    "shortInfo": "Most classic design! And it ate tapes.",
+    "longInfo": "Because the tape has been gone, the walkman faces extinction due to lack of food",
     "collectedBy": [],
     "createdBy": {},
     "stories": []

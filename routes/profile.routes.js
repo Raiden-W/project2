@@ -7,7 +7,7 @@ const Profile = require('../models/Profile.model')
 const { uploader, destroyer } = require('../middleware/cloudinary.config.js')
 
 router.get('/', isLoggedIn, async (req, res) => {
-  //stories
+  //current user's profile and stories
   try {
     const stories = await Story.find({ createdBy: req.session.user._id })
       .sort({ createdAt: -1 })
@@ -17,19 +17,44 @@ router.get('/', isLoggedIn, async (req, res) => {
     if (!profile) {
       profile = await Profile.create({ createdBy: req.session.user._id })
     }
-    res.render('profile', { stories, profile, username: req.session.user.username })
+    res.render('profile', {
+      stories,
+      profile,
+      username: req.session.user.username,
+      isMyProfile: true,
+    })
   } catch (error) {
-    console.log('error in the displaying profile route GET', error)
+    console.log('error in the displaying my profile route GET', error)
   }
 })
 
 router.get('/edit', isLoggedIn, async (req, res) => {
   try {
     const profile = await Profile.findOne({ createdBy: req.session.user._id })
-    console.log(profile)
     res.render('edit-profile', { profile })
   } catch (error) {
     console.log('error in the profile editing route GET', error)
+  }
+})
+
+router.get('/:userId', async (req, res) => {
+  //any user's profile and stories
+  try {
+    const stories = await Story.find({ createdBy: req.params.userId })
+      .sort({ createdAt: -1 })
+      .populate('itemId')
+    const profile = await Profile.findOne({ createdBy: req.params.userId }).populate(
+      'createdBy',
+      'username'
+    )
+    res.render('profile', {
+      stories,
+      profile,
+      username: profile.createdBy.username,
+      isMyProfile: false,
+    })
+  } catch (error) {
+    console.log('error in the displaying any profile route GET', error)
   }
 })
 
