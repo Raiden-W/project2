@@ -1,15 +1,35 @@
-<h1>Check out the latest stories'</h1>
+<div id="container-item" class="row  justify-content-center">    
+    <div id="storiesStyle" class="col-8">
+
+<h2>Check out the latest stories</h2>
+
 <% stories.forEach(story =>{%>
-    <div class="stories-container">
-        <div class="infoLatestStories"> 
-            <a href="item/<%-story.itemId._id %>">
-            <img class="itemImg" src="<%- story.itemId.imgUrl[0] %>" alt="item image">     
-            </a>
-            <h5><%- story.itemId.name %></h5>
+    <div class = "storiesPage">
+        <div id="bold" class="storiesWindowStyle">
+                
+                <span class="windowStyle1"> 
+                By <a href="/profile/<%- story.createdBy._id %>" class="ms-1"> <%- story.createdBy.username %> </a>   
+                </span> 
+                <div class="containerBtnStyle">
+                    <span class="windowStyle2"> --- </span>
+                    <span class="windowStyle3"> X</span> 
+                </div>
         </div>
-        <div class="text-stories">
-        <p><%- story.text %></p>
-        <p>By user <a href="/profile/<%- story.createdBy._id %>"> <%- story.createdBy.username %> </a></p>
+
+        <div class="stories-container">
+            <div class="infoLatestStories"> 
+                <a href="item/<%-story.itemId._id %>">
+                <img class="itemImg border rounded" src="<%- story.itemId.imgUrl[0] %>" alt="item image">     
+                </a>
+                
+            </div>
+
+            <div class="text-stories">
+                <h5><%- story.itemId.name %></h5>
+                <p><%- story.text %></p>
+            </div>
         </div>
     </div>
 <% }) %>
+</div>
+</div>
