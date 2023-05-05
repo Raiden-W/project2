@@ -1,10 +1,20 @@
-<form action="/profile/edit" method="POST" enctype="multipart/form-data">
-    <img src="<%- profile.picUrl %>" alt="Profile Picture" width="150px">
-    <label>Choose a profile picture to upload:
-        <input type="file" name="pic" accept="image/png, image/jpeg">
-    </label>
-    <label>Date of birth:<input type="date" name="birth" value="<%- profile.birth %>"></label>
-    <label>Introduction:<input name="intro" value="<%- profile.intro %>"></label>
-    
-    <button type="submit">Save Profile</button>    
-</form>
+<div class="d-flex align-items-center justify-content-center mt-5 w-100">
+    <div class="box box-lg mb-5">
+        <div class="box-title text-center">Edit my profile</div>
+        <form action="/profile/edit" method="POST" enctype="multipart/form-data">
+            
+            <div class="text-center"><img src="<%- profile.picUrl %>" alt="Profile Picture" width="150px"></div>
+            <label class="my-3 text-secondary">Choose a profile picture to upload:
+                <input type="file" name="pic" accept="image/png, image/jpeg">
+            </label>
+            <label class="my-2 text-secondary">Date of birth:</label>
+            <input type="date" name="birth" value="<%- profile.birth %>" class="form-control form-control-lg">
+
+            <label class="my-2 text-secondary">Introduction</label>
+            <input name="intro" value="<%- profile.intro %>" class="form-control form-control-lg">
+            <div class="mt-4 text-end">
+                <button type="submit" class="btn btn-lg btn-primary" >Save Profile</button>    
+            </div>
+        </form>
+    </div>
+</div>
