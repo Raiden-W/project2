@@ -32,8 +32,8 @@
 
 <div class="col-6">
     <% stories.forEach(story =>{ %>
-        <div class="storiesPage">
-            <div class="storiesWindowStyle">
+        <div class="storiesPage" >
+            <div class="storiesWindowStyle" >
                 
                 <span class="windowStyle1"> </span> 
                 <div class="containerBtnStyle">
@@ -41,7 +41,7 @@
                     <span class="windowStyle3"> X</span> 
                 </div>
             </div>
-            <div class="stories-container">
+            <div class="stories-container" id="<%- story.itemId.name %>">
                 <div class="infoLatestStories"> 
                     <a href="item/<%-story.itemId._id %>">
                     <img class="itemImg border rounded" src="<%- story.itemId.imgUrl[0] %>" alt="item image">     
@@ -49,7 +49,7 @@
                     
                 </div>
     
-                <div class="text-stories">
+                <div class="text-stories" >
                     <h5><%- story.itemId.name %></h5>
                     <p><%- story.text %></p>
                     <% if(isMyProfile) { %>
