@@ -1,12 +1,13 @@
-<div id="profilePage" class="row">
-    <div class="col-6">
+<div id="profilePage" class="row justify-content-center">
+    
+    <div class="col-4">
         <div id="profile-container">
             <div id="profile-info">
                 <img src="<%- profile.picUrl %>" alt="Profile Picture" width=120 class="border rounded">
                 <h4 class="mt-2"><%- username %></h4>
-                <div class="my-2">Date of Birth: <%- profile.birth ? profile.birth : "unknown" %></div>
-                <div class="my-2">Introduction: <%- profile.intro %></div>
-                <div class=" w-100">
+                <div class="my-2"> <%- profile.birth ? profile.birth : "unknown" %></div>
+                <div class="mt-2 mb-5" style="border: solid black;border-radius: 4px; margin: 10px;"> <%- profile.intro %></div>
+                <div class="mt-1 w-100">
                     <div class="text-center mb-2">Collected:</div>
                     <ul class="list-group w-100">
                         <% stories.forEach(story =>{ %>
@@ -30,49 +31,59 @@
     </div>
 
 <div class="col-6">
-<!-- <div id="profile-stories-list"> -->
-<!-- <h2><%- isMyProfile ? "My stories" : `${username}'s stories`%></h2> -->
     <% stories.forEach(story =>{ %>
-        <div class="item-page-stories">
-            <article id="<%- story.itemId.name %>" class="d-flex">
-                <div class="me-4">
-                    <a href="/item/<%- story.itemId._id %>">
-                    <img src="<%- story.itemId.imgUrl[0] %>" alt="Item Image" width="60" class="border rounded">
-                    </a>
+        <div class="storiesPage" >
+            <div class="storiesWindowStyle" >
+                
+                <span class="windowStyle1"> </span> 
+                <div class="containerBtnStyle">
+                    <span class="windowStyle2"> --- </span>
+                    <span class="windowStyle3"> X</span> 
                 </div>
-                <div>
+            </div>
+            <div class="stories-container" id="<%- story.itemId.name %>">
+                <div class="infoLatestStories"> 
+                    <a href="item/<%-story.itemId._id %>">
+                    <img class="itemImg border rounded" src="<%- story.itemId.imgUrl[0] %>" alt="item image">     
+                    </a>
+                    
+                </div>
+    
+                <div class="text-stories" >
                     <h5><%- story.itemId.name %></h5>
                     <p><%- story.text %></p>
-                    <h6>By <%- username %></h6> 
-                </div>
-            </article>
-            <% if(isMyProfile) { %>
-                <div>
-                    <div  class="text-end">
-                        <a href="/stories/edit/<%-story._id%>" class="btn btn-light me-2">Edit</a>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#profile-delete-modal">
-                            Delete
-                        </button>
-                    </div>
-                    <!-- Modal - Be ready to unfold it. It is super bulky.-->
-                    <div class="modal fade" id="profile-delete-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    Do you really want to delete this story?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                                    <a href="/stories/delete/<%-story._id%>">
-                                        <button type="button" class="btn btn-danger">Confirm</button>
-                                    </a>
+                    <% if(isMyProfile) { %>
+                        <div class="text-end w-100">
+                            <div class=" me-3">
+                                <a href="/stories/edit/<%-story._id%>" class="btn btn-light me-2">Edit</a>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#profile-delete-modal">
+                                    Delete
+                                </button>
+                            </div>
+                            
+                        </div>
+                        <!-- Modal - Be ready to unfold it. It is super bulky.-->
+                        <div class="modal fade" id="profile-delete-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        Do you really want to delete this story?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                                        <a href="/stories/delete/<%-story._id%>">
+                                            <button type="button" class="btn btn-danger">Confirm</button>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <% } %>
                 </div>
-            <% } %>
+            </div>
+
+          
         </div>
     <% }) %>
     <% if(isMyProfile && stories.length === 0) { %>
