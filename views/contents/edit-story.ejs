@@ -1,12 +1,21 @@
-<h1>Your story about <%- storyToEdit.itemId.name %></h1>
-<img src="<%- storyToEdit.itemId.imgUrl %>" alt="<%- storyToEdit.itemId.name %> image" width="150px">
-<form method="post" action="/stories/edit/<%-storyToEdit._id%>">
-    <div><input type="text" name = "text" value="<%-storyToEdit.text%>"></div>
-    <!-- Button trigger modal -->
-    <button type="submit" id="edit-story-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-story-modal">
-        Update your story!
-    </button>
-</form>
+<div class="d-flex align-items-center justify-content-center mt-5 w-100">
+    <div class="box box-lg">
+        <div class="box-title text-center">Your story about <%- storyToEdit.itemId.name %></div>
+        <div class="text-center my-3">  
+            <img src="<%- storyToEdit.itemId.imgUrl %>"  width="200px" class="rounded border">
+        </div>
+        <form method="post" action="/stories/edit/<%-storyToEdit._id%>">
+            <label class="my-2 text-secondary">Story</label>
+            <input type="text" name = "text" value="<%-storyToEdit.text%>" class="form-control form-control-lg">
+            <!-- Button trigger modal -->
+            <div class="mt-3 text-end">
+                <button type="submit" id="edit-story-btn"  class="btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#edit-story-modal">
+                    Update your story!
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <!-- Modal - Be ready to unfold it. It is super bulky.-->
 <div class="modal fade" id="edit-story-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">

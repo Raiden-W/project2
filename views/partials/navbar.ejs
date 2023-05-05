@@ -9,8 +9,16 @@
         <a id="logo" href="/"><img id="logo-img" src="../../images/logo.png" alt="logo image" /></a>
     </div>
     <div class="d-flex align-items-center">
-        <% if( typeof(user) !="undefined"){%>
-        <a href="/profile"><%- user.username %>  </a>
+        <% if( typeof(user) !="undefined"){%> 
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%- user.username %> 
+            </a>
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><a class="dropdown-item" href="/auth/logout">LogOut</a></li>
+            </ul>
+          </li>
         <% } else {%>
         <a href="/auth/login">Login</a>
         <a href="/auth/signup">Sign up</a>

@@ -1,45 +1,48 @@
+<div id="container-item" class="row">    
+    <div class="col-6">
+        <div class="itemPage">
+            <div class="windowStyle">
+                
+                <span class="windowStyle1"> nostalgic item
+                </span> 
+                    <div class="containerBtnStyle">
+                        <span class="windowStyle2"> --- </span>
+                        <span class="windowStyle3"> X</span> 
+                </div>
+                </div>
+            <div>
+                <div class="text-center">
+                    <% item.imgUrl.forEach(url => { %>
+                        <img class="itemImg" src="<%- url %>" alt="<%- item.name %> image">
+                    <% }) %>      
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                    <h5 class="card-title"><%- item.name %></h4>   
+                    <a href="/stories/<%- item._id %>/create-story" class="btn btn-outline-primary">
+                            <%- item.collectedBy.length %>  <i class="fa-solid fa-heart"></i>  
+                    </a>
+                </div> 
+            </div>
 
-<div id = container-item>    
-<div class="itemPage">
-    <div class="windowStyle">
-        
-        <p><span class="windowStyle1">about</span> <span class="windowStyle2"> --- </span><span class="windowStyle3"> X</span>  </p>
-    </div>
-    <div>
-        <div class="text-center">
-            <% item.imgUrl.forEach(url => { %>
-                <img class="itemImg" src="<%- url %>" alt="<%- item.name %> image">
-            <% }) %>      
+
+            <p class="item-long-info"><%- item.longInfo %></p>
+
         </div>
-
-            <h5 class="card-title"><%- item.name %></h4>    <div class="text-end">
-                <a href="/stories/<%- item._id %>/create-story" class="btn btn-outline-primary">
-                    <%- item.collectedBy.length %>  <i class="fa-solid fa-heart"></i>  
-                 </a>
-        </div> 
     </div>
-
-
-    <p id="item-long-info"><%- item.longInfo %></p>
-    <% if(!!item.createdBy) { %>
-        <p>Item added by
-            <a href="/profile/<%- item.createdBy._id %>">
-                <%- item.createdBy.username %>
-            </a>
-        </p>
-    <% } %>
-
-
-
-    <% if(item.stories.length !== 0) { %>  
-        <div class="item-page-stories-container">
-            <% item.stories.forEach(story => { %>
-                <p>By user <a href="/profile/<%- story.createdBy._id %>"><%- story.createdBy.username %></a></p>
-                <p><%- story.text %></p>
-            <% }) %> 
-        </div> 
-    <% } else { %> 
-        <p>No stories here yet.</p>
-    <% } %> 
-</div>
+    <div class="col-6">
+            <% if(item.stories.length !== 0) { %>  
+                <% item.stories.forEach(story => { %>
+                    <div class="item-page-stories">
+                        <p><%- story.text %></p>
+                        <div class="storyLikedBy">
+                        <div>By user <a href="/profile/<%- story.createdBy._id %>"><%- story.createdBy.username %></a></div>
+                    </div>
+                    </div>
+                <% }) %> 
+            <% } else { %> 
+                <div class="noStoriesYet">
+                No stories here yet.
+                </div>
+            <% } %> 
+    </div>
 </div>
