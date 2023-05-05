@@ -240,10 +240,10 @@ The url to your repository and to your deployed project
 
 [Repository Link](https://github.com/sarahpst/project2)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](https://retro-watseland.adaptable.app/)
 
 ### Slides
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://docs.google.com/presentation/d/18C3J2RxF5_vpOuRojMMD_Rgb14yOTYcXnQQqRSpr_Ys/edit?usp=sharing)

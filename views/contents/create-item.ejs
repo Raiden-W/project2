@@ -1,25 +1,21 @@
-<form action="/create-item" method="POST" enctype="multipart/form-data">
-    <label>Item name:<input name="name"></label>
-    <label>Short description:<input name="shortInfo"></label>
-    <label>Complete description:<input name="longInfo"></label>
-    <label>Choose up to 4 images of your item to upload:
-        <input type="file" name="img" accept="image/png, image/jpeg" multiple>
-    </label>
-    <button type="submit">Create Item</button>    
-</form>
- <!-- Button trigger modal -->
- <button type="submit" id="create-item-btn" data-bs-toggle="modal" data-bs-target="#create-item-modal">
-    Create this item!
-</button> 
-</form>
+<div class="d-flex align-items-center justify-content-center mt-5 w-100">
+    <div class="box">
+        <div class="box-title text-center">Create an Nostalic item</div>
+        <form action="/create-item" method="POST" enctype="multipart/form-data">
+            <label class="my-2 text-secondary">Item name</label>
+            <input name="name"  placeholder="Enter an item name" class="form-control form-control-lg">
+            <label class="my-2 text-secondary">Short description</label>
+            <input name="shortInfo"  placeholder="Enter a short description" class="form-control form-control-lg">
+            <label class="my-2 text-secondary">Complete description</label>
+            <textarea rows="4" name="longInfo"  placeholder="Enter the description" class="form-control form-control-lg"></textarea>
 
-<!-- Modal - Be ready to unfold it. It is super bulky.-->
-<div class="modal fade" id="create-item-modal" tabindex="-1" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-        <div class="modal-body">
-            Item is being created...
-        </div>
+            <label class="my-3 text-secondary">Choose up to 4 images of your item to upload:
+                <input type="file" name="img" accept="image/png, image/jpeg" multiple>
+            </label>
+
+            <div class="mt-3 text-end">
+            <button type="submit" class="btn btn-primary btn-lg">Create Item</button>    
+            </div>
+        </form>
     </div>
-</div>
 </div>

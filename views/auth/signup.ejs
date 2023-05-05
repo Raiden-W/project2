@@ -1,10 +1,18 @@
-<h1>Create an Account</h1>
 
-<form method="post" action="signup">
-    <input type="text" name="username" placeholder="Enter your username">
-    <input type="password" name="password" placeholder="Enter your password">
-    <input type="password" name="passwordCheck" placeholder="Confirm your password">
-
-    <button type="submit">Sign Up</button>
-
-</form>
+<div class="d-flex align-items-center justify-content-center mt-5 w-100">
+    <div class="box">
+        <div class="box-title text-center">Create an Account</div>
+        <form method="post" action="signup">
+            <label class="my-2 text-secondary">Username</label>
+            <input type="text" name="username" placeholder="Enter your username" class="form-control form-control-lg">
+            <label class="my-2 text-secondary">Password</label>
+            <input type="password" name="password" placeholder="Enter your password" class="form-control form-control-lg">
+            <label class="my-2 text-secondary">Confirm password</label>
+            <input type="password" name="passwordCheck" placeholder="Confirm your password" class="form-control form-control-lg">
+           
+            <div class="text-end mt-4"> 
+                <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>

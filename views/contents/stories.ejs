@@ -1,16 +1,15 @@
-<h1>List of stories</h1>
+<h1>Check out the latest stories'</h1>
 <% stories.forEach(story =>{%>
-    <div> 
-        <a href="item/<%-story.itemId._id %>">
-            <img src="<%- story.itemId.imgUrl[0] %>" alt="item image" width="100">     
-        </a>
+    <div class="stories-container">
+        <div class="infoLatestStories"> 
+            <a href="item/<%-story.itemId._id %>">
+            <img class="itemImg" src="<%- story.itemId.imgUrl[0] %>" alt="item image">     
+            </a>
+            <h5><%- story.itemId.name %></h5>
+        </div>
+        <div class="text-stories">
+        <p><%- story.text %></p>
+        <p>By user <a href="/profile/<%- story.createdBy._id %>"> <%- story.createdBy.username %> </a></p>
+        </div>
     </div>
-    <h5><%- story.itemId.name %></h5>
-    <div>
-        <%- story.text %>
-    </div>
-
-    <p>By: 
-        <a href="/profile/<%- story.createdBy._id %>"><%- story.createdBy.username %></a>
-    </p>
 <% }) %>
